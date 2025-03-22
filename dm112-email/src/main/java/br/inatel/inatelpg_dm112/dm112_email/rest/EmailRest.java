@@ -2,10 +2,11 @@ package br.inatel.inatelpg_dm112.dm112_email.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.inatel.inatelpg_dm112.dm112_email.model.Email;
 import br.inatel.inatelpg_dm112.dm112_email.service.EmailService;
 
 @RestController
@@ -16,8 +17,8 @@ public class EmailRest {
 	private EmailService emailService;
 
 	@PostMapping("/enviar")
-	public String enviarEmail(@RequestParam String para, @RequestParam String assunto, @RequestParam String texto) {
-		emailService.enviarEmail(para, assunto, texto);
+	public String enviarEmail(@RequestBody Email email) {
+		emailService.enviarEmail(email.getPara(), email.getAssunto(), email.getTexto());
 		return "E-mail enviado com sucesso!";
 	}
 }
