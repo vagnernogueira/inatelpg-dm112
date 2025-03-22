@@ -1,0 +1,30 @@
+package br.inatel.inatelpg_dm112.dm112_logistica.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Controller;
+
+import br.inatel.inatelpg_dm112.dm112_logistica.model.entity.PedidoLogisticaEntity;
+import br.inatel.inatelpg_dm112.dm112_logistica.service.PedidoService;
+
+@Controller
+public class OnBootController {
+	
+	@Autowired
+	private PedidoService pedidoLogisticaService;
+	
+	@EventListener(ApplicationReadyEvent.class)
+	public void testeListarPedidos() {
+		List<PedidoLogisticaEntity> listPedidoLogisticaEntity =  pedidoLogisticaService.testeListarPedidos();
+		System.out.println("=== Lista de Pedidos ===");
+        if (listPedidoLogisticaEntity.isEmpty()) {
+            System.out.println("Nenhum pedido cadastrado.");
+        } else {
+        	listPedidoLogisticaEntity.forEach(pedido -> System.out.println(pedido.getIdPedidoLogistica() + " " + pedido.getNmCliente()));
+        }
+        System.out.println("=== FIM Lista de Pedidos ===");
+	}
+}
