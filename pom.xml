@@ -17,6 +17,7 @@
 
     <modules>
         <module>dm112-logistica</module>
+		<module>dm112-email</module>
     </modules>
 
     <build>
