@@ -3,8 +3,14 @@
 Avaliações da disciplina DM112
 
 
+Projeto implementado em Java 17 com maven utilizando spring-boot 3.4.4
+ 
+
+Módulos maven: dm112-email e dm112-logistica
+
 
 Exemplo de requisição de teste
+
 
 GET: http://localhost:8080/api/consultarPedidos
 
@@ -15,3 +21,7 @@ POST: http://localhost:8080/api/registrarEntrega
 	"cpfRecebedor": "11122233344",
 	"dtEntrega": "21/03/2025"
 }
+
+
+POST: http://localhost:8080/mailapi/enviar
+@RequestParam String para, @RequestParam String assunto, @RequestParam String texto
